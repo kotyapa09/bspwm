@@ -1,5 +1,5 @@
 configuration{
-    modi: "window,drun,ssh,calc"
+    modi: "window,drun,ssh,calc";
     font: "JetBrainsMono Nerd Font 14";
     show-icons: true;
     icon-theme: "Papirus-dark";
