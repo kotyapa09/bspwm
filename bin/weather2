@@ -2,4 +2,4 @@
 
 # TODO: Add dynamic city input before startup
 
-curl "https://wttr.in/Kiev"
+curl "https://wttr.in/Novosibirsk"
