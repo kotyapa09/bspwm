@@ -1,7 +1,7 @@
 #!/bin/sh
 
 
-city="Kiev"
+city="Novosibirsk"
 url="wttr.in/$city?format=3"
 weather=$(curl -s $url)
 
