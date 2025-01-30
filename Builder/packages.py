@@ -17,7 +17,7 @@ BASE_PACKAGES = [
 ]
 
 DEV_PACKAGES = [
-    "nmap", "hashcat", "perl-image-exiftool", "aircrack-ng", "exploitdb"
+    "nmap", "hashcat", "perl-image-exiftool", "aircrack-ng", "exploitdb", "hydra"
 ]
 
 AUR_PACKAGES = [
