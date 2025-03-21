@@ -14,7 +14,7 @@ BASE_PACKAGES = [
     "p7zip", "gparted", "sshfs", "openvpn", "xclip", "gpick", "wget", "ueberzug", "netctl", "light", "libreoffice",
     "breeze", "vulkan-intel", "intel-ucode", "ttf-jetbrains-mono", "ttf-jetbrains-mono-nerd", "ttf-fira-code",
     "ttf-iosevka-nerd", "flameshot", "ghex", "chromium", "obsidian", "telegram-desktop", "python-pip", "docker", "dosfstools",
-    "ntfs-3g", "sublime-text" 
+    "ntfs-3g", "sublime-text", "uv"
 ]
 
 DEV_PACKAGES = [
