@@ -59,7 +59,7 @@ Print
 #
 
 # quit/restart bspwm
-ctrl + shift + {q,t}
+ctrl + shift + {q,e}
     bspc {quit,wm -r}
 
 # close and kill

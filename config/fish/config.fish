@@ -9,20 +9,6 @@ alias sysfetch='/home/user/bin/fetchs/sysfetch'
 
 alias weather='/home/user/bin/weather'
 alias prognose='/home/user/bin/weather2'
-
-
-alias serverconn='ssh cat@server -p 2244'
-
-
-alias topython='cd /home/disk/Dima/projects/python'
-alias tosites='cd /home/disk/Dima/projects/sites'
-alias toprojects='cd /home/disk/Dima/projects/'
-
-
-alias venv='cd .venv || cd venv && echo $(pwd) > /home/user/.config/.venv && set VIRTUAL_ENV "$(cat /home/user/.config/.venv)" && source $VIRTUAL_ENV/bin/activate.fish && cd ..'
-alias pye='set VIRTUAL_ENV "$(cat /home/user/.config/.venv)" && $VIRTUAL_ENV/bin/python'
-alias pipe='set VIRTUAL_ENV "$(cat /home/user/.config/.venv)" && $VIRTUAL_ENV/bin/python -m pip'
-
 # TODO: Replace journal aliases after switching to OpenRC
 
 # Display critical errors

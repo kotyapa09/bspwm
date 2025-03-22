@@ -46,7 +46,7 @@ multiplier = 6
 save_to_clipboard = true
 semantic_escape_chars = ",│`|:\"' ()[]{}<>\t"
 
-[shell]
+[terminal.shell]
 program = "/usr/bin/fish"
 
 [window]
@@ -56,6 +56,8 @@ title = "Alacritty"
 
 [general]
 import = ["/home/user/.config/alacritty/themes/custom.toml"]
+
+[terminal]
 
 [window.class]
 general = "Alacritty"
