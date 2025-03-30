@@ -38,3 +38,5 @@ if status is-interactive
 end
 
 sh /home/user/.config/fish/script.sh
+
+zoxide init fish
