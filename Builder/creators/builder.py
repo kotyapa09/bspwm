@@ -3,7 +3,6 @@ import packages
 
 from logger import Logger, LoggerStatus
 from creators.software import AurBuilder, FirefoxCustomize
-from creators.drivers import GraphicDrivers
 from creators.patches import PatchSystemBugs
 from creators.daemons import Daemons
 
@@ -13,37 +12,53 @@ class SystemConfiguration:
     def start(*args):
         start_text = f"[+] Starting assembly. Options {args}"
         Logger.add_record(start_text, status=LoggerStatus.SUCCESS)
-        if args[0]: SystemConfiguration.__start_option_1()
-        if args[1]: SystemConfiguration.__start_option_2()
-        if args[2]: SystemConfiguration.__start_option_3()
-        if args[3]: SystemConfiguration.__start_option_4()
-        if args[4]: GraphicDrivers.build()
+
+        SystemConfiguration.__install_dotfiles()
+        SystemConfiguration.__pacman_update()
+        SystemConfiguration.__default_packages()
+
+        if args[0]: SystemConfiguration.__base_packages()
+        if args[1]: SystemConfiguration.__pentest_packages()
+        if args[2]: SystemConfiguration.__extra_packages()
+
         # TODO: The process should not be repeated when reassembling, important components should only be updated with new ones
         Daemons.enable_all_daemons()
         PatchSystemBugs.enable_all_patches()
 
     @staticmethod
-    def __start_option_1():
+    def __install_dotfiles():
         SystemConfiguration.__create_default_folders()
         SystemConfiguration.__copy_bspwm_dotfiles()
 
     @staticmethod
-    def __start_option_2():
+    def __pacman_update():
         Logger.add_record("[+] Updates Enabled", status=LoggerStatus.SUCCESS)
         os.system("sudo pacman -Sy")
 
     @staticmethod
-    def __start_option_3():
-        Logger.add_record("[+] Installed BSPWM Dependencies", status=LoggerStatus.SUCCESS)
+    def __default_packages():
+        Logger.add_record("[+] Installed Default Dependencies", status=LoggerStatus.SUCCESS)
         AurBuilder.build()
-        SystemConfiguration.__install_pacman_package(packages.BASE_PACKAGES)
-        SystemConfiguration.__install_aur_package(packages.AUR_PACKAGES)
+        SystemConfiguration.__install_pacman_package(packages.DEFAULT_PACKAGES)
+        SystemConfiguration.__install_aur_package(packages.DEFAULT_AUR_PACKAGES)
         FirefoxCustomize.build()
 
     @staticmethod
-    def __start_option_4():
+    def __base_packages():
+        Logger.add_record("[+] Installed BSPWM Dependencies", status=LoggerStatus.SUCCESS)
+        AurBuilder.build()
+        SystemConfiguration.__install_pacman_package(packages.BASE_PACKAGES)
+        SystemConfiguration.__install_aur_package(packages.BASE_AUR_PACKAGES)
+
+    @staticmethod
+    def __pentest_packages():
         Logger.add_record("[+] Installed Dev Dependencies", status=LoggerStatus.SUCCESS)
-        SystemConfiguration.__install_pacman_package(packages.DEV_PACKAGES)
+        SystemConfiguration.__install_pacman_package(packages.PENTEST_PACKAGES)
+        SystemConfiguration.__install_pacman_package(packages.PENTEST_AUR_PACKAGES)
+
+    @staticmethod
+    def __extra_packages():
+        Logger.add_record("[+] Install Extra Packages", status=LoggerStatus.SUCCESS)
         SystemConfiguration.__install_pacman_package(packages.GNOME_OFFICIAL_TOOLS)
 
     @staticmethod
@@ -65,8 +80,7 @@ class SystemConfiguration:
     @staticmethod
     def __create_default_folders():
         Logger.add_record("[+] Create default directories", status=LoggerStatus.SUCCESS)
-        default_folders = "~/Videos ~/Documents ~/Downloads " + \
-                          "~/Music ~/Desktop"
+        default_folders = "~/Downloads ~/Desktop"
         os.system("mkdir -p ~/.config")
         os.system(f"mkdir -p {default_folders}")
         os.system("cp -r Images/ ~/")
